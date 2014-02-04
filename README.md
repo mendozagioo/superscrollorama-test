@@ -1,4 +1,4 @@
 superscrollorama-test
 =====================
 
-A simple test to scrollorama plugin
+A simple test to scrollorama plugin.
