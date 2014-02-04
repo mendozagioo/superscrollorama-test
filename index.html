@@ -1,77 +1,34 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Superscrollorama test</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body class="simple-demo">
-    <div id="content-wrapper">
-      <div id="examples-1">
-        <h1 id="fade-it">Fade it</h1>
-        <h1 id="fly-it">Fly it</h1>
-      </div>
-      <div id="example2">
-        <h1 id="move-it">Move it</h1>
-      </div>
-      <div id="examples-pin">
-        <div id="pin-frame">
-          <h2>Pin it</h2>
-        </div>
-      </div>
-    </div>
-    <p>hello</p>
-    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="js/TweenMax.min.js"></script>
-    <script>window.jQuery || document.write('<script src="_/js/jquery-1.9.1.min.js"><\/script>')</script>
-    <script src="js/jquery.superscrollorama.js"></script>
-    <script>
+    <title>Shadows</title>
+    <script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="flatshadow.js"></script>
+    <style type="text/css" media="all">
+      .flat-icon {
+        text-align: center;
+        padding:23px 28px;
+        font-weight: bold;
+        display: inline-block;
+        line-height: 100%;
+        overflow: hidden;
+        text-transform: uppercase;
+        margin-right: 15px;
+        width: 40px;
+        font-size: 50px;
+        border-radius: 50px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        margin-left: 100px;
+      }
+    </style>
+    <script type="text/javascript" charset="utf-8">
       $(document).ready(function() {
-        var controller = $.superscrollorama();
-        // individual element tween examples
-        controller.addTween('#fade-it', TweenMax.from( $('#fade-it'), .5, {css:{opacity: 0}}), 0, 50);
-        controller.addTween('#fly-it', TweenMax.from( $('#fly-it'), .50, {css:{right:'1000px'}, ease:Quad.easeInOut}), 0, 200);
-        controller.pin($('#example2'), 3000, {
-          anim: (new TimelineLite())
-            .append(
-              TweenMax.fromTo($('#move-it'), .5,
-                {css:{left: '50%', top: 300}, immediateRender:true},
-                {css:{left: -120}})
-            )
-            .append(
-              TweenMax.to($('#move-it'), .5,
-                {css:{left: 200}})
-            )
-            .append(
-              TweenMax.to($('#move-it'), .5,
-                {css:{left: '50px'}})
-            )
-        });
-        //controller.addTween('#scale-it', TweenMax.fromTo( $('#scale-it'), .25, {css:{opacity:0, fontSize:'20px'}, immediateRender:true, ease:Quad.easeInOut}, {css:{opacity:1, fontSize:'240px'}, ease:Quad.easeInOut}));
-        //controller.addTween('#smush-it', TweenMax.fromTo( $('#smush-it'), .25, {css:{opacity:0, 'letter-spacing':'30px'}, immediateRender:true, ease:Quad.easeInOut}, {css:{opacity:1, 'letter-spacing':'-10px'}, ease:Quad.easeInOut}), 0, 100); // 100 px offset for better timing
-
-        // PIN IT
-        var pinDur = 4000;
-        // create animation timeline for pinned element
-        var pinAnimations = new TimelineLite();
-        pinAnimations
-          .append(TweenMax.from($('#pin-frame h2'), .5, {css:{marginTop:0}, ease: Quad.easeInOut}))
-          .append([
-            TweenMax.to($('#pin-frame-slide'), 1, {css:{marginLeft:0}}),
-            TweenMax.to($('#pin-frame'), 1, {css:{marginLeft:'100%'}})
-          ], .5);
-
-        // pin element, use onPin and onUnpin to adjust the height of the element
-        controller.pin($('#examples-pin'), pinDur, {
-          anim:pinAnimations, 
-          onPin: function() {
-            $('#examples-pin').css('height','100%');
-          }, 
-          onUnpin: function() {
-            $('#examples-pin').css('height','300px');
-          }
-        });
+        $('.flat-icon').flatshadow({color: '#eee', angle: 'SW', boxShadow: '#d7ccfb9', fade: true});
       });
     </script>
+  </head>
+  <body>
+    <div class="flat-icon"> C </div>
   </body>
 </html>
